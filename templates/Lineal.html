@@ -1,0 +1,27 @@
+{% extends "./layout.html" %}
+
+{% block title %}{{ data.titulo }}{% endblock %}
+
+{% block body %}
+    <h1>{{ data.titulo }}</h1>
+    <form action="/Lineal" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="Filename" value={{data.Filename}}>
+        <p>Valor de x: </p>
+        <select name="x_name">
+            {% for x in data.Encabezados %}
+            <option value="{{ x }}">{{ x }}</option>
+            {% endfor %}                                              
+        </select>
+        <br/>
+        <p>Valor de y: </p>
+        <select name="y_name">
+            {% for y in data.Encabezados %}
+            <option value="{{ y }}">{{ y }}</option>
+            {% endfor %}                                              
+        </select>
+        <input type="submit">
+    </form>
+    <img src="data:image/png;base64,{{URL1}}" alt="GRAFICA">
+    <img src="data:image/png;base64,{{URL2}}" alt="GRAFICA2">
+
+{% endblock %}

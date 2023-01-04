@@ -1,0 +1,50 @@
+{% extends "./layout.html" %}
+
+{% block title %}{{ data.titulo }}{% endblock %}
+
+{% block body %}
+    <h1>{{ data.titulo }}</h1>
+    {% if data.titulo == 'Regresión lineal' %}
+        <form action="/Lineal" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="Filename" value={{data.Filename}}>
+            <p>Valor de x: </p>
+            <select name="x_name">
+                {% for x in data.Encabezados %}
+                <option value="{{ x }}">{{ x }}</option>
+                {% endfor %}                                              
+            </select>
+            <br/>
+            <p>Valor de y: </p>
+            <select name="y_name">
+                {% for y in data.Encabezados %}
+                <option value="{{ y }}">{{ y }}</option>
+                {% endfor %}                                              
+            </select>
+            <input type="submit">
+        </form>
+    {% elif data.titulo == 'Regresión polinomial' %}
+    <form action="/Poly" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="Filename" value={{data.Filename}}>
+        <p>Valor de x: </p>
+        <select name="x_name">
+            {% for x in data.Encabezados %}
+            <option value="{{ x }}">{{ x }}</option>
+            {% endfor %}                                              
+        </select>
+        <br/>
+        <p>Valor de y: </p>
+        <select name="y_name">
+            {% for y in data.Encabezados %}
+            <option value="{{ y }}">{{ y }}</option>
+            {% endfor %}                                              
+        </select>
+        <input type="submit">
+    </form>
+    {% elif data.titulo == 'Clasificador Gaussiano' %}
+        <p>3</p>
+    {% elif data.titulo == 'Clasificador de árboles de decisión' %}
+        <p>4</p>
+    {% else %}
+        <p>5</p>
+    {% endif %}
+{% endblock %}

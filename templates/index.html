@@ -1,0 +1,17 @@
+{% extends "./layout.html" %}
+
+{% block title %}{{ data.titulo }}{% endblock %}
+
+{% block body %}
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <h1>Machine learning</h1>
+        <input type="file" name="archivo">
+        <br/>
+        <br/>
+        <input type="submit" value="Regresión lineal" name="Lineal">
+        <input type="submit" value="Regresión polinomial" name="Polinomial">
+        <input type="submit" value="Clasificador Gaussiano" name="Gaussiano">
+        <input type="submit" value="Clasificador de árboles de decisión" name="Arbol">
+        <input type="submit" value="Redes neuronales" name="Neuronal">
+    </form>
+{% endblock %}
